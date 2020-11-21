@@ -1,0 +1,46 @@
+div
+  script(src=url_for(theme.CDN.jquery))
+  script(src=url_for(theme.CDN.utils))
+  script(src=url_for(theme.CDN.main))
+
+  if theme.medium_zoom
+    script(src=url_for(theme.CDN.medium_zoom))
+  else if theme.fancybox
+    script(src=url_for(theme.CDN.fancybox))
+
+  if theme.instantpage
+    script(src=url_for(theme.CDN.instantpage) type="module" defer)
+
+  if theme.lazyload.enable
+    script(src=url_for(theme.CDN.lazyload) async)
+
+  if (theme.snackbar && theme.snackbar.enable)
+    script(src=url_for(theme.CDN.snackbar))
+
+  //- search
+  if theme.algolia_search.enable
+    script(src=url_for(theme.CDN.algolia_js))
+  else if theme.local_search.enable
+    script(src=url_for(theme.CDN.local_search))
+
+  if theme.preloader
+    !=partial('includes/loading/loading-js', {}, {cache:theme.fragment_cache})
+
+  .js-pjax
+  
+    include ./third-party/math/index.pug
+
+    if commentsJsLoad
+      include ./third-party/comments/js.pug
+
+  !=fragment_cache('injectBottom', function(){return injectHtml(theme.inject.bottom)})
+
+  if theme.aplayerInject && theme.aplayerInject.enable
+    if theme.pjax || theme.aplayerInject.per_page
+      include ./head/aplayer.pug
+    else if page.aplayer
+      include ./head/aplayer.pug
+
+  if theme.pjax
+    !=partial('includes/third-party/pjax', {}, {cache:theme.fragment_cache})
+

@@ -1,0 +1,58 @@
+#page
+  .curriculum_vitae#article-container
+    if site.data.curriculum_vitae
+      each i in site.data.curriculum_vitae
+        .curriculum_vitae_basic_information
+             .basic_information_name!=i.name
+             .basic_information_tagline!=i.tagline
+             .basic_information_avatar!=i.avatar
+            
+        .curriculum_vitae_education
+            each my_education in i.education
+                .my_education_basic_introduction
+                    span.my_education.school
+                    span.my_education.grades
+                    span.my_education.dates
+                each my_classes in my_education.classes
+                    - var my_classes_visible= my_classes.visible
+                    if my_classes_visible
+                        .my_classes_name
+                            span.my_classes.name
+                        .my_classes_content
+                            span.my_classes.content
+                        .my_classes_date
+                            span.my_classes.date
+
+        .curriculum_vitae_experience
+            each my_experience in i.experience
+                - var my_experience_visible = my_experience.visible
+                if my_experience.visible
+                    .my_experience_images
+                        span.my_experience.image
+                    .my_experience_name
+                        span.my_experience.name
+                    .my_experience_content
+                        span.my_experience.content
+                
+        .curriculum_vitae_projects
+            each my_projects in i.projects
+                - var my_projects_visible = my_projects.visible
+                if my_projects.visible
+                    .my_projects_image
+                        span.my_projects.image
+                    .my_projects_name
+                        span.my_projects.name
+                    .my_projects_content
+                        span.my_projects.content
+
+        .curriculum_vitae_skills
+            each my_skills in i.skills.grid
+                - var my_skills_visible = my_skills.visible
+                if my_skills.visible
+                    .my_skills_language
+                        span.my_skills.language
+                    .my_skills_percent
+                        span.my_skills.percent
+
+    if theme.reward.enable
+      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})

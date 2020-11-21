@@ -1,0 +1,39 @@
+.medium-zoom-image--opened
+  z-index: 99999 !important
+  margin: 0 !important
+
+.medium-zoom-overlay
+  z-index: 99999 !important
+
+.mermaid
+  overflow: auto
+  margin: 0 0 1rem
+  background: $white
+  text-align: center
+  opacity: 0
+  transition: all .3s
+
+  &[data-processed]
+    opacity: 1
+
+
+
+.aplayer
+  color: $font-black
+
+#article-container
+  .aplayer
+    margin: 0 0 1rem
+
+    if hexo-config('beautify.enable')
+      ol,
+      ul
+        margin: 0
+        padding: 0
+
+        li
+          margin: 0
+          padding: 0 15px
+
+          &:before
+            content: none

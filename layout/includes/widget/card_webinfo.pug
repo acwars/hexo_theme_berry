@@ -1,0 +1,14 @@
+.card-widget.card-webinfo
+  .card-content
+    .item-headline
+        i.fas.fa-chart-bar
+        span= _p('aside.card_webinfo.headline')
+    .webinfo
+      .webinfo-item
+        .webinfo-article-name= _p('aside.card_webinfo.article_name') + " :"
+        .webinfo-article-count= site.posts.length      
+      if theme.runtimeshow.enable
+        .webinfo-item
+          .webinfo-runtime-name= _p('aside.card_webinfo.runtime_name') + " :"
+          #webinfo-runtime-count.webinfo-runtime-count(publish_date=theme.runtimeshow.publish_date)      
+

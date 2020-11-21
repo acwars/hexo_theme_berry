@@ -1,0 +1,82 @@
+sidebar:
+  toc: Table of Contents
+
+footer:
+  framework: Framework
+  theme: Theme
+
+copy:
+  success: Copy successfully
+  error: Copy error
+  noSupport: The browser does not support
+
+page:
+  articles: Articles
+  tag: Tag
+  category: Category
+  archives: Archives
+
+sticky: Sticky
+no_title: No title
+archives: Archives
+
+post:
+  created: Created
+  modified: Modified
+
+search: Search
+
+local_search:
+  label: Local search
+  input_placeholder: Search for Posts
+  hits_empty: "We didn't find any results for the search: ${query}"
+  powered_by: Powered by
+
+pagination:
+  prev: Previous Post
+  next: Next Post
+
+aside:
+  articles: Articles
+  tags: Tags
+  categories: Categories
+  card_announcement: Announcement
+  card_categories: Categories
+  card_tags: Tags
+  card_archives: Archives
+  card_recent_post: Recent Post
+  card_bookmark: Bookmark
+  card_webinfo:
+    headline: Info
+    article_name: Article
+    runtime_name: Run time
+  more_button: More
+  
+donate: Donate
+share: Share
+
+bookmark:
+  title: Bookmark
+
+
+rightside:
+  night_mode_title: Dark Mode
+  back_to_top: Back to top
+  toc: Table of Contents
+  setting: Setting
+  comment: Comment
+
+runtime_unit: days
+
+Snackbar:
+  bookmark:
+    message_prev: Press
+    message_next: to bookmark this page
+  day_to_night: Light Mode Activated Manually
+  night_to_day: Dark Mode Activated Manually
+
+loading: Loading...
+
+error404:
+  error_title: Page not found
+  back_button: Go back home

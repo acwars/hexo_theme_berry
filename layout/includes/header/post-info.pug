@@ -1,0 +1,50 @@
+#post-info
+  #post-title
+    .posttitle= page.title || _p('no_title')
+    
+  #post-meta
+    .meta-firstline
+      if (theme.post_meta.post.date_type)
+        span.post-meta-date
+          if (theme.post_meta.post.date_type === 'both')
+            i.far.fa-calendar.fa-fw.post-meta-icon
+            span.post-meta-label= _p('post.created')
+            time.post-meta-date-created(datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
+            span.post-meta-separator |
+            i.far.fa-calendar-check.fa-fw.post-meta-icon
+            span.post-meta-label= _p('post.modified')
+            time.post-meta-date-updated(datetime=date_xml(page.updated) title=_p('post.modified') + ' ' + full_date(page.modified))=date(page.modified, config.date_format)
+          else
+            - let data_type_update = theme.post_meta.post.date_type === 'modified'
+            - let date_type = data_type_update ? 'modified' : 'date'
+            - let date_icon = data_type_update ? 'fa-calendar-check' :'fa-calendar'
+            - let data_info = data_type_update ? _p('post.modified') : _p('post.created')
+            i.fa-fw.post-meta-icon(class=date_icon)
+            span.post-meta-label= data_info
+            time(datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
+      if (theme.post_meta.post.categories && page.categories.data.length > 0)
+        span.post-meta-categories
+          if (theme.post_meta.post.date_type)
+            span.post-meta-separator |
+
+          each item, index in page.categories.data
+            i.fas.fa-bookmark.fa-fw.post-meta-icon
+            a(href=url_for(item.path)).post-meta-categories #[=item.name]
+            if (index < page.categories.data.length - 1)
+              i.fas.fa-angle-right.post-meta-separator
+
+      if (theme.post_meta.post.author)
+        span.post-meta-author
+          if (theme.post_meta.post.date_type)
+            span.post-meta-separator |
+            i.fas.fa-user.fa-fw.post-meta-icon
+            a(href=url_for('/curriculumvitae/')).post-meta-author #[=config.author]
+
+
+      if !theme.comments.lazyload && page.comments !== false && theme.comments.use && theme.comments.count
+        - var whichCount = theme.comments.use[0]
+          if whichCount === 'Disqus'
+            i.far.fa-comments.fa-fw.post-meta-icon
+            span.post-meta-label= _p('post.comments') + ':'
+            span.disqus-comment-count.comment-count
+              a(href=full_url_for(page.path) + '#disqus_thread')

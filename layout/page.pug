@@ -1,0 +1,25 @@
+extends includes/layout.pug
+
+block content
+  if page.type === 'tags'
+    .tag-cloud
+      .tag-cloud__title= _p('page.tag')
+        |
+      .tag-cloud-tags
+        !=cloudTags({source: site.tags, minfontsize: 15, maxfontsize: 30, limit: 0})
+      if page.comments !== false && theme.comments && theme.comments.use
+        - var commentsJsLoad = true
+        !=partial('includes/third-party/comments/index', {}, {cache:theme.fragment_cache})
+  else if page.type === 'link'
+    include flink.pug
+  else if page.type === 'categories'    
+    .category-content
+      .category-lists
+        .category__title= _p('page.category')
+          |
+        div!= list_categories()
+  else if page.type === 'curriculumvitae'
+    include curriculum_vitae.pug
+  else
+    #page
+      #article-container!= page.content
